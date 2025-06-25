@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basavaraj S K | Senior Full-Stack Developer</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Animate On Scroll (AOS) Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Custom CSS for advanced effects -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #e5e7eb; /* gray-200 */
+        }
+
+        .font-rajdhani {
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        /* Glassmorphism Effect */
+        .glass-card {
+            background: rgba(23, 23, 23, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Glowing Border for Headshot */
+        .glowing-border {
+            position: relative;
+            border-radius: 50%;
+            overflow: hidden;
+            padding: 5px;
+        }
+        .glowing-border::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            z-index: -1;
+            margin: -2px;
+            border-radius: inherit;
+            background: conic-gradient(from 180deg at 50% 50%, #4f46e5 0deg, #a855f7 180deg, #4f46e5 360deg);
+            animation: spin 3s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Typewriter effect */
+        .typewriter h2 {
+            overflow: hidden; 
+            border-right: .15em solid #a855f7; /* The cursor */
+            white-space: nowrap; 
+            margin: 0 auto; 
+            letter-spacing: .05em; 
+            animation: 
+                typing 3.5s steps(40, end),
+                blink-caret .75s step-end infinite;
+        }
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #a855f7; }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111827; /* gray-900 */
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4f46e5; /* indigo-600 */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a855f7; /* purple-500 */
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Preloader -->
+    <div id="preloader" class="fixed inset-0 bg-[#0a0a0a] z-[100] flex justify-center items-center">
+        <div class="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-purple-500"></div>
+    </div>
+
+    <!-- Header / Nav -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold font-rajdhani text-white">Basavaraj S K</a>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#about" class="text-gray-300 hover:text-purple-400 transition">About</a>
+                <a href="#skills" class="text-gray-300 hover:text-purple-400 transition">Skills</a>
+                <a href="#projects" class="text-gray-300 hover:text-purple-400 transition">Projects</a>
+                <a href="#experience" class="text-gray-300 hover:text-purple-400 transition">Experience</a>
+                <a href="#contact" class="bg-indigo-600 hover:bg-purple-500 text-white font-bold py-2 px-4 rounded-lg transition-all duration-300">Contact</a>
+            </div>
+             <button id="mobile-menu-button" class="md:hidden text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900/90 backdrop-blur-sm">
+            <a href="#about" class="block py-2 px-4 text-sm text-gray-200 hover:bg-indigo-600">About</a>
+            <a href="#skills" class="block py-2 px-4 text-sm text-gray-200 hover:bg-indigo-600">Skills</a>
+            <a href="#projects" class="block py-2 px-4 text-sm text-gray-200 hover:bg-indigo-600">Projects</a>
+            <a href="#experience" class="block py-2 px-4 text-sm text-gray-200 hover:bg-indigo-600">Experience</a>
+            <a href="#contact" class="block py-2 px-4 text-sm text-gray-200 hover:bg-indigo-600">Contact</a>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main>
+
+        <!-- Hero Section -->
+        <section id="hero" class="h-screen flex items-center justify-center relative overflow-hidden">
+            <div id="particles-js" class="absolute inset-0 z-0"></div>
+            <div class="container mx-auto px-6 text-center z-10">
+                <!-- PROFILE PICTURE SECTION -->
+                <div class="w-48 h-48 mx-auto mb-6 glowing-border">
+                    <!-- 
+                      Replace the 'src' attribute below with the public URL of your profile picture.
+                      You can upload your image to a service like Imgur (imgur.com) and use the "Direct Link".
+                    -->
+                    <!-- <img src="https://placehold.co/200x200/0a0a0a/e5e7eb?text=BSK" alt="Profile picture of Basavaraj S K" class="rounded-full w-full h-full object-cover"> -->
+                    <img src="https://github.com/Basavask/aish-store-ecommerce/blob/main/pro.jpg?raw=true" alt="https://placehold.co/200x200/0a0a0a/e5e7eb?text=BSK" class="rounded-full w-full h-full object-cover">
+                    
+                </div>
+                <h1 class="text-5xl md:text-7xl font-bold font-rajdhani text-white mb-4" data-aos="fade-down">Basavaraj S K</h1>
+                <div class="typewriter inline-block">
+                    <h2 class="text-xl md:text-2xl text-purple-400 font-rajdhani">Senior Full-Stack Developer | GenAI Enthusiast</h2>
+                </div>
+                <div class="mt-8 flex justify-center space-x-6" data-aos="fade-up" data-aos-delay="500">
+                    <a href="https://linkedin.com/in/basavaraj-s-k-798631125" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-purple-400 transform hover:scale-125 transition-transform">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    </a>
+                    <a href="https://github.com/Basavask" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-purple-400 transform hover:scale-125 transition-transform">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+                    </a>
+                    <a href="https://medium.com/@basukori8463" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-purple-400 transform hover:scale-125 transition-transform">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8"><path d="M12 12H4m16 0H12m0 0V4m0 8v8"/></svg>
+                    </a>
+                </div>
+                 <div class="mt-10" data-aos="fade-up" data-aos-delay="700">
+                    <a href="#projects" class="bg-indigo-600 hover:bg-purple-500 text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 text-lg mr-4">View My Work</a>
+                    <a href="#" id="download-cv" class="border-2 border-indigo-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-indigo-600 transition-all duration-300 text-lg">Download CV</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-12 font-rajdhani" data-aos="fade-up">About Me</h2>
+                <div class="grid md:grid-cols-5 gap-12 items-center">
+                    <div class="md:col-span-3 text-lg text-gray-300" data-aos="fade-right">
+                        <p class="mb-4">
+                            Results-driven Senior Full-Stack Developer and Technical Leader with <strong>7+ years of expertise</strong> in modern web technologies, AI integration, and enterprise application development.
+                        </p>
+                        <p class="mb-4">
+                            I thrive on delivering scalable solutions using Angular, React, Next.js, and Java Spring Boot. As a Subject Matter Expert, I have mentored over <strong>50 junior developers</strong> and enjoy speaking at local meetups.
+                        </p>
+                        <p>
+                             I'm passionate about pioneering AI-driven development solutions and recognized for leading complex projects from conception to deployment, improving application performance by <strong>30%</strong> and reducing production bugs by <strong>40%</strong>.
+                        </p>
+                    </div>
+                    <div class="md:col-span-2" data-aos="fade-left">
+                        <div class="glass-card rounded-xl p-6 space-y-4">
+                            <div class="flex items-start space-x-4">
+                               <div class="text-purple-400 mt-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg></div>
+                               <div><strong class="font-semibold text-white">Location:</strong><br> Bengaluru, India</div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                               <div class="text-purple-400 mt-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 18-6-6 6-6"></path><path d="m18 18-6-6 6-6"></path></svg></div>
+                               <div><strong class="font-semibold text-white">Experience:</strong><br> 7+ Years</div>
+                            </div>
+                             <div class="flex items-start space-x-4">
+                               <div class="text-purple-400 mt-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" x2="4" y1="22" y2="15"></line></svg></div>
+                               <div><strong class="font-semibold text-white">Passion:</strong><br> GenAI & Open Source</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 bg-gray-900/50">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-12 font-rajdhani" data-aos="fade-up">Technical Skills</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Frontend -->
+                    <div class="glass-card p-6 rounded-xl" data-aos="fade-up">
+                        <h3 class="text-2xl font-bold mb-4 font-rajdhani text-purple-400">Frontend</h3>
+                        <div class="flex flex-wrap gap-2">
+                           <span class="skill-badge">TypeScript</span> <span class="skill-badge">JavaScript</span> <span class="skill-badge">Angular</span> <span class="skill-badge">React</span> <span class="skill-badge">Next.js</span> <span class="skill-badge">NgRx</span> <span class="skill-badge">Redux</span> <span class="skill-badge">Tailwind CSS</span>
+                        </div>
+                    </div>
+                     <!-- Backend -->
+                    <div class="glass-card p-6 rounded-xl" data-aos="fade-up" data-aos-delay="100">
+                        <h3 class="text-2xl font-bold mb-4 font-rajdhani text-purple-400">Backend</h3>
+                        <div class="flex flex-wrap gap-2">
+                           <span class="skill-badge">Java</span> <span class="skill-badge">Spring Boot</span> <span class="skill-badge">Node.js</span> <span class="skill-badge">Express.js</span> <span class="skill-badge">REST APIs</span> <span class="skill-badge">GraphQL</span> <span class="skill-badge">WebSockets</span>
+                        </div>
+                    </div>
+                    <!-- AI & DevOps -->
+                    <div class="glass-card p-6 rounded-xl" data-aos="fade-up" data-aos-delay="200">
+                        <h3 class="text-2xl font-bold mb-4 font-rajdhani text-purple-400">AI & DevOps</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-badge">GenAI</span> <span class="skill-badge">LLMs</span> <span class="skill-badge">Prompt Engineering</span> <span class="skill-badge">Watsonx</span> <span class="skill-badge">Git</span> <span class="skill-badge">Docker</span> <span class="skill-badge">Agile/Scrum</span>
+                        </div>
+                    </div>
+                     <!-- Databases & Tools -->
+                    <div class="glass-card p-6 rounded-xl" data-aos="fade-up" data-aos-delay="300">
+                        <h3 class="text-2xl font-bold mb-4 font-rajdhani text-purple-400">Databases & Tools</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-badge">MySQL</span> <span class="skill-badge">MongoDB</span> <span class="skill-badge">PostgreSQL</span> <span class="skill-badge">Kafka</span> <span class="skill-badge">VSCode Plugins</span> <span class="skill-badge">SonarQube</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-12 font-rajdhani" data-aos="fade-up">Projects Portfolio</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project Card 1 -->
+                    <div class="project-card" data-aos="fade-up">
+                        <h3 class="text-xl font-bold mb-2 font-rajdhani text-purple-400">VSCode GenAI Plugin</h3>
+                        <p class="text-gray-400 text-sm mb-4">An intelligent code assistant supporting multiple LLMs for code generation, debugging, and optimization, boosting developer productivity by 40%.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-badge">TypeScript</span> <span class="tech-badge">VSCode API</span> <span class="tech-badge">LLMs</span>
+                        </div>
+                    </div>
+                    <!-- Project Card 2 -->
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                        <h3 class="text-xl font-bold mb-2 font-rajdhani text-purple-400">Hyundai Car Service Management</h3>
+                        <p class="text-gray-400 text-sm mb-4">A comprehensive platform for the automotive industry, featuring theft tracking, real-time notifications, and handling over 10,000 daily transactions.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-badge">Angular</span> <span class="tech-badge">Node.js</span> <span class="tech-badge">MongoDB</span>
+                        </div>
+                    </div>
+                    <!-- Project Card 3 -->
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                        <h3 class="text-xl font-bold mb-2 font-rajdhani text-purple-400">Bangalore Police MDT</h3>
+                        <p class="text-gray-400 text-sm mb-4">A government complaint management system with live GPS tracking for police vehicles using WebSockets and Kafka for message processing.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-badge">Java</span> <span class="tech-badge">Spring Boot</span> <span class="tech-badge">Angular</span> <span class="tech-badge">Kafka</span>
+                        </div>
+                    </div>
+                     <!-- Project Card 4 -->
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+                        <h3 class="text-xl font-bold mb-2 font-rajdhani text-purple-400">COVID-19 Patient Portal</h3>
+                        <p class="text-gray-400 text-sm mb-4">Rapidly developed healthcare portal for patient registration and status tracking with real-time updates, built in 4 weeks during the pandemic.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-badge">React</span> <span class="tech-badge">Java</span> <span class="tech-badge">Spring JPA</span> <span class="tech-badge">MySQL</span>
+                        </div>
+                    </div>
+                     <!-- Project Card 5 -->
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="400">
+                        <h3 class="text-xl font-bold mb-2 font-rajdhani text-purple-400">IBM ICA GenAI Assistants</h3>
+                        <p class="text-gray-400 text-sm mb-4">A Watsonx Challenge POC creating specialized AI assistants for various roles using role-specific prompt engineering, showcased in 50+ client demos.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-badge">Watsonx</span> <span class="tech-badge">Python</span> <span class="tech-badge">GenAI</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-20 bg-gray-900/50">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-20 font-rajdhani" data-aos="fade-up">Work Experience</h2>
+                <div class="relative">
+                    <!-- Vertical Line -->
+                    <div class="absolute left-1/2 -ml-px w-0.5 h-full bg-indigo-600" data-aos="fade-up"></div>
+                    
+                    <!-- Experience Item 1 -->
+                    <div class="relative mb-12" data-aos="fade-left">
+                        <div class="md:flex items-center">
+                            <div class="md:w-1/2 md:pr-8">
+                                <div class="glass-card rounded-xl p-6">
+                                    <h3 class="text-2xl font-bold font-rajdhani text-purple-400">Senior Application Consultant</h3>
+                                    <p class="text-lg text-white mb-1">IBM</p>
+                                    <p class="text-sm text-gray-400 mb-4">Dec 2019 - Present</p>
+                                    <ul class="list-disc list-inside text-gray-300 space-y-1">
+                                        <li>Led full-stack development with Angular, React, & Java.</li>
+                                        <li>Mentored 50+ junior developers as SME.</li>
+                                        <li>Improved app performance by 30%.</li>
+                                        <li>Led Watsonx Challenge in 2023 & 2024.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="hidden md:block md:w-1/2"></div>
+                        </div>
+                         <div class="absolute left-1/2 -ml-4 w-8 h-8 bg-purple-500 rounded-full border-4 border-gray-900"></div>
+                    </div>
+
+                    <!-- Experience Item 2 -->
+                     <div class="relative mb-12" data-aos="fade-right">
+                        <div class="md:flex items-center flex-row-reverse">
+                            <div class="md:w-1/2 md:pl-8">
+                                <div class="glass-card rounded-xl p-6">
+                                    <h3 class="text-2xl font-bold font-rajdhani text-purple-400">Software Engineer</h3>
+                                    <p class="text-lg text-white mb-1">Trinity Mobility Pvt Ltd</p>
+                                    <p class="text-sm text-gray-400 mb-4">Nov 2017 - Dec 2019</p>
+                                    <ul class="list-disc list-inside text-gray-300 space-y-1">
+                                        <li>Developed hybrid mobile apps using Angular & Ionic.</li>
+                                        <li>Built a responsive Citizen Engagement Platform.</li>
+                                        <li>Collaborated in Agile teams to deliver high-quality solutions.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="hidden md:block md:w-1/2"></div>
+                        </div>
+                        <div class="absolute left-1/2 -ml-4 w-8 h-8 bg-purple-500 rounded-full border-4 border-gray-900"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20">
+            <div class="container mx-auto px-6">
+                 <h2 class="text-4xl font-bold text-center mb-12 font-rajdhani" data-aos="fade-up">Get In Touch</h2>
+                 <div class="max-w-3xl mx-auto glass-card rounded-xl p-8" data-aos="fade-up">
+                    <form>
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <input type="text" placeholder="Your Name" class="w-full bg-gray-800 text-white p-3 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            <input type="email" placeholder="Your Email" class="w-full bg-gray-800 text-white p-3 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        </div>
+                        <div class="mb-6">
+                             <input type="text" placeholder="Subject" class="w-full bg-gray-800 text-white p-3 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        </div>
+                        <div class="mb-6">
+                            <textarea placeholder="Your Message" rows="5" class="w-full bg-gray-800 text-white p-3 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500"></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="bg-indigo-600 hover:bg-purple-500 text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 text-lg">Send Message</button>
+                        </div>
+                    </form>
+                    <div class="text-center mt-8 text-gray-400">
+                        <p>Or reach me directly at:</p>
+                        <a href="mailto:basukori8463@gmail.com" class="text-purple-400 hover:underline">basukori8463@gmail.com</a>
+                        <p class="mt-1">+91 9008310901</p>
+                    </div>
+                 </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-gray-900/50">
+        <div class="container mx-auto px-6 text-center text-gray-400">
+            <div class="flex justify-center space-x-6 mb-4">
+                 <a href="https://linkedin.com/in/basavaraj-s-k-798631125" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-purple-400 transition"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+                 <a href="https://github.com/Basavask" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-purple-400 transition"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a>
+                 <a href="https://medium.com/@basukori8463" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-purple-400 transition"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M12 12H4m16 0H12m0 0V4m0 8v8"/></svg></a>
+            </div>
+            <p>&copy; <span id="year"></span> Basavaraj S K. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- Animate On Scroll (AOS) -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    
+    <script>
+        // Preloader
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            preloader.style.transition = 'opacity 0.5s ease';
+            preloader.style.opacity = '0';
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 500);
+        });
+
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50,
+        });
+
+        // Dynamic Year for Footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Navbar style on scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-gray-900/80', 'backdrop-blur-sm', 'shadow-lg');
+            } else {
+                navbar.classList.remove('bg-gray-900/80', 'backdrop-blur-sm', 'shadow-lg');
+            }
+        });
+
+        // Particles.js configuration
+        particlesJS('particles-js', {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#a855f7"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false,
+                    "anim": {
+                        "enable": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#4f46e5",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 4,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 140,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+
+        // Custom styling for skill badges and project cards
+        // This is a workaround since Tailwind doesn't have direct support for these in a simple setup
+        document.head.insertAdjacentHTML('beforeend', `<style>
+            .skill-badge {
+                display: inline-block;
+                background-color: rgba(79, 70, 229, 0.2);
+                color: #c7d2fe;
+                padding: 0.25rem 0.75rem;
+                border-radius: 9999px;
+                font-size: 0.875rem;
+                border: 1px solid rgba(79, 70, 229, 0.5);
+                transition: all 0.2s ease-in-out;
+            }
+            .skill-badge:hover {
+                transform: translateY(-2px);
+                background-color: rgba(79, 70, 229, 0.4);
+            }
+            .project-card {
+                background: rgba(23, 23, 23, 0.6);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 0.75rem;
+                padding: 1.5rem;
+                transition: all 0.3s ease;
+                transform-style: preserve-3d;
+            }
+            .project-card:hover {
+                transform: translateY(-5px) scale(1.02);
+                box-shadow: 0 10px 30px rgba(79, 70, 229, 0.3);
+                border-color: rgba(168, 85, 247, 0.5);
+            }
+            .tech-badge {
+                display: inline-block;
+                background-color: rgba(139, 92, 246, 0.15);
+                color: #ddd6fe;
+                padding: 0.25rem 0.5rem;
+                border-radius: 0.25rem;
+                font-size: 0.75rem;
+                font-weight: 500;
+            }
+        </style>`);
+
+        // Placeholder for Download CV link
+        const downloadCV = document.getElementById('download-cv');
+        downloadCV.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert("The CV is not available for download in this demo. In a real project, this would trigger a file download.");
+            // In a real scenario, you'd use something like:
+            // window.location.href = '/path/to/Basavaraj_S_K_Resume.pdf';
+        });
+
+    </script>
+</body>
+</html>
